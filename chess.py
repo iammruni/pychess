@@ -1,3 +1,4 @@
+
 class Board:
     def __init__(self):
         # Initialize an 8x8 board with pieces in starting positions
@@ -13,9 +14,15 @@ class Board:
         ]
 
     def display(self):
-        for row in self.board:
-            print(" ".join(row))
-    
+        # Print column labels (A-H)
+        #print("  A | B | C | D | E | F | G | H")
+        print("  _A_|_B_|_C_|_D_|_E_|_F_|_G_|_H_")
+
+        # Print each row with the corresponding row number (1-8)
+        for index, row in enumerate(self.board, start=1):
+            print(f"{index}| " + "   ".join(row))
+
+
     def validate_move(self, start, end):
         """Validates the moves and return 1,
         if the moves are valid and 0 otherwise."""
@@ -46,12 +53,3 @@ class Board:
             return 1
         return 0
 
-
-
-board = Board()
-board.display()
-print()
-
-# Move a pawn
-board.move_piece((6, 0), (4, 0))
-board.display()
